@@ -101,7 +101,8 @@ src/
 ├── main/
 │   ├── java/com/gomes/pacienteapi/
 │   │   ├── controller/     # Controllers REST
-│   │   ├── service/        # Lógica de negócio
+│   │   ├── service/        # Interfaces de serviço
+│   │   │   └── impl/       # Implementações de serviço
 │   │   ├── repository/     # Camada de persistência
 │   │   ├── model/          # Entidades JPA
 │   │   ├── dto/            # Data Transfer Objects
