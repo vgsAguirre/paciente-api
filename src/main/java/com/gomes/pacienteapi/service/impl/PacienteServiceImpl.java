@@ -43,6 +43,14 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     @Transactional(readOnly = true)
+    public PacienteResponse buscarPorId(Long id) {
+        Paciente paciente = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado com o ID: " + id));
+        return mapper.toResponse(paciente);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public PacienteResponse buscarPorCpf(String cpf) {
         Paciente paciente = repository.findByCpf(cpf)
                 .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado com o CPF: " + cpf));

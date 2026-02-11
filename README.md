@@ -63,6 +63,117 @@ A aplicação estará disponível em: `http://localhost:8080`
 ### Swagger UI
 Acesse a documentação interativa em: `http://localhost:8080/swagger-ui.html`
 
+### Endpoints Disponíveis
+
+#### **POST** `/api/pacientes`
+Cria um novo paciente no sistema.
+
+**Request Body:**
+```json
+{
+  "nome": "João Silva",
+  "cpf": "12345678909",
+  "dataNascimento": "1990-05-15",
+  "email": "joao.silva@email.com",
+  "telefone": "11999999999",
+  "endereco": "Rua das Flores, 123 - São Paulo/SP",
+  "observacoes": "Paciente com alergia a penicilina"
+}
+```
+
+**Response:** `201 Created`
+
+---
+
+#### **GET** `/api/pacientes`
+Retorna a lista de todos os pacientes cadastrados.
+
+**Response:** `200 OK`
+```json
+[
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "cpf": "12345678909",
+    "dataNascimento": "1990-05-15",
+    "email": "joao.silva@email.com",
+    "telefone": "11999999999",
+    "endereco": "Rua das Flores, 123 - São Paulo/SP",
+    "observacoes": "Paciente com alergia a penicilina",
+    "dataCadastro": "2026-02-11T10:30:00",
+    "dataAtualizacao": "2026-02-11T10:30:00"
+  }
+]
+```
+
+---
+
+#### **GET** `/api/pacientes/{id}`
+Busca um paciente específico pelo ID.
+
+**Exemplo:** `/api/pacientes/1`
+
+**Response:** `200 OK`
+
+---
+
+#### **GET** `/api/pacientes/{id}`
+Busca um paciente específico pelo ID.
+
+**Exemplo:** `/api/pacientes/1`
+
+**Response:** `200 OK`
+
+---
+
+#### **GET** `/api/pacientes/cpf/{cpf}`
+Busca um paciente específico pelo CPF (aceita com ou sem máscara).
+
+**Exemplos:**
+- `/api/pacientes/cpf/12345678909`
+- `/api/pacientes/cpf/123.456.789-09`
+
+**Response:** `200 OK`
+
+---
+
+#### **GET** `/api/pacientes/nome?nome={nome}`
+Busca pacientes por nome (busca parcial, case-insensitive).
+
+**Exemplo:** `/api/pacientes/nome?nome=João`
+
+**Response:** `200 OK`
+
+---
+
+#### **PUT** `/api/pacientes/{id}`
+Atualiza todos os dados de um paciente (atualização completa).
+
+**Request Body:** Todos os campos obrigatórios
+
+**Response:** `200 OK`
+
+---
+
+#### **PATCH** `/api/pacientes/{id}`
+Atualiza parcialmente os dados de um paciente (apenas campos enviados).
+
+**Request Body:** Apenas os campos que deseja atualizar
+```json
+{
+  "email": "novoemail@email.com"
+}
+```
+
+**Response:** `200 OK`
+
+---
+
+#### **DELETE** `/api/pacientes/{id}`
+Remove um paciente do sistema.
+
+**Response:** `204 No Content`
+
 ## 🗄️ Banco de Dados
 
 ### H2 Console

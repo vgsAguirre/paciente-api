@@ -11,6 +11,8 @@ public interface PacienteService {
     
     List<PacienteResponse> listarTodos();
     
+    PacienteResponse buscarPorId(Long id);
+    
     PacienteResponse buscarPorCpf(String cpf);
     
     List<PacienteResponse> buscarPorNome(String nome);

@@ -50,6 +50,18 @@ public class PacienteController {
         return ResponseEntity.ok(pacientes);
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Buscar paciente por ID", description = "Retorna um paciente específico pelo ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Paciente encontrado"),
+            @ApiResponse(responseCode = "400", description = "Paciente não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
+    })
+    public ResponseEntity<PacienteResponse> buscarPorId(@PathVariable Long id) {
+        PacienteResponse paciente = service.buscarPorId(id);
+        return ResponseEntity.ok(paciente);
+    }
+
     @GetMapping("/cpf/{cpf}")
     @Operation(summary = "Buscar paciente por CPF", description = "Retorna um paciente específico pelo CPF")
     @ApiResponses(value = {
