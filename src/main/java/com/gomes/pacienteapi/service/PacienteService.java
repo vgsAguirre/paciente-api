@@ -14,4 +14,6 @@ public interface PacienteService {
     PacienteResponse buscarPorCpf(String cpf);
     
     List<PacienteResponse> buscarPorNome(String nome);
+    
+    void deletar(Long id);
 }

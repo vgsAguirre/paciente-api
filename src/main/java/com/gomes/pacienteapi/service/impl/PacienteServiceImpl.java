@@ -57,4 +57,13 @@ public class PacienteServiceImpl implements PacienteService {
                 .map(mapper::toResponse)
                 .toList();
     }
+
+    @Override
+    @Transactional
+    public void deletar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new IllegalArgumentException("Paciente não encontrado com o ID: " + id);
+        }
+        repository.deleteById(id);
+    }
 }

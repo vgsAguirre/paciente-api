@@ -73,4 +73,16 @@ public class PacienteController {
         List<PacienteResponse> pacientes = service.buscarPorNome(nome);
         return ResponseEntity.ok(pacientes);
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Deletar paciente", description = "Remove um paciente do sistema pelo ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Paciente deletado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Paciente não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
+    })
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        service.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
 }
