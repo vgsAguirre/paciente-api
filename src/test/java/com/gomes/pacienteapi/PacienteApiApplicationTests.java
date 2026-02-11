@@ -1,4 +1,4 @@
-package com.gomes.pacienteapi.paciente_api;
+package com.gomes.pacienteapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

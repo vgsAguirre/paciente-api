@@ -1,4 +1,4 @@
-package com.gomes.pacienteapi.paciente_api;
+package com.gomes.pacienteapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
