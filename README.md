@@ -107,6 +107,7 @@ src/
 │   │   ├── model/          # Entidades JPA
 │   │   ├── dto/            # Data Transfer Objects
 │   │   ├── mapper/         # Conversões entre DTO e Entity
+│   │   ├── validation/     # Validadores customizados
 │   │   ├── exception/      # Tratamento de exceções
 │   │   └── config/         # Configurações
 │   └── resources/

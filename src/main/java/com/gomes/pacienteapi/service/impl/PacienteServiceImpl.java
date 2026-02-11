@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PacienteServiceImpl implements PacienteService {
@@ -28,5 +30,31 @@ public class PacienteServiceImpl implements PacienteService {
         Paciente salvo = repository.save(paciente);
         
         return mapper.toResponse(salvo);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PacienteResponse> listarTodos() {
+        return  repository.findAll()
+                .stream()
+                .map(mapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public PacienteResponse buscarPorCpf(String cpf) {
+        Paciente paciente = repository.findByCpf(cpf)
+                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado com o CPF: " + cpf));
+        return mapper.toResponse(paciente);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PacienteResponse> buscarPorNome(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome)
+                .stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 }
