@@ -5,13 +5,13 @@ API RESTful para gerenciamento de pacientes com operações CRUD completas, segu
 ## 🚀 Tecnologias Utilizadas
 
 - **Java 21** (LTS)
-- **Spring Boot 3.5.11 (SNAPSHOT)**
+- **Spring Boot 3.5.11-SNAPSHOT**
 - **Spring Data JPA** - Persistência de dados
 - **Spring Validation** - Validação de dados
 - **H2 Database** - Banco de dados em memória
 - **PostgreSQL Driver** - Preparado para uso em produção (implementação futura)
 - **Lombok** - Redução de boilerplate
-- **Springdoc OpenAPI** - Documentação automática (Swagger)
+- **Springdoc OpenAPI 2.7.0** - Documentação automática (Swagger)
 - **JUnit 5 + Mockito** - Testes unitários
 - **Maven** - Gerenciamento de dependências
 
@@ -41,7 +41,7 @@ git clone https://github.com/vgsAguirre/paciente-api.git
 cd paciente-api
 ```
 
-### 2. Compile o projeto
+### 2. Compile o projeto e gera o JAR
 ```bash
 mvn clean install
 ```
