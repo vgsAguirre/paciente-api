@@ -106,6 +106,7 @@ src/
 │   │   ├── repository/     # Camada de persistência
 │   │   ├── model/          # Entidades JPA
 │   │   ├── dto/            # Data Transfer Objects
+│   │   ├── mapper/         # Conversões entre DTO e Entity
 │   │   ├── exception/      # Tratamento de exceções
 │   │   └── config/         # Configurações
 │   └── resources/
