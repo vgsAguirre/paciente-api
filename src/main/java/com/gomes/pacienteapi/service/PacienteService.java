@@ -16,4 +16,8 @@ public interface PacienteService {
     List<PacienteResponse> buscarPorNome(String nome);
     
     void deletar(Long id);
+    
+    PacienteResponse atualizar(Long id, PacienteRequest request);
+    
+    PacienteResponse atualizarParcial(Long id, PacienteRequest request);
 }

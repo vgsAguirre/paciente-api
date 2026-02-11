@@ -66,4 +66,38 @@ public class PacienteServiceImpl implements PacienteService {
         }
         repository.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public PacienteResponse atualizar(Long id, PacienteRequest request) {
+        Paciente paciente = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado com o ID: " + id));
+
+        validarCpfDuplicado(paciente.getCpf(), request.getCpf());
+
+        mapper.updateEntity(paciente, request);
+        Paciente atualizado = repository.save(paciente);
+        return mapper.toResponse(atualizado);
+    }
+
+    @Override
+    @Transactional
+    public PacienteResponse atualizarParcial(Long id, PacienteRequest request) {
+        Paciente paciente = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado com o ID: " + id));
+
+        if (request.getCpf() != null) {
+            validarCpfDuplicado(paciente.getCpf(), request.getCpf());
+        }
+
+        mapper.updateEntityPartial(paciente, request);
+        Paciente atualizado = repository.save(paciente);
+        return mapper.toResponse(atualizado);
+    }
+
+    private void validarCpfDuplicado(String cpfAtual, String cpfNovo) {
+        if (!cpfAtual.equals(cpfNovo) && repository.existsByCpf(cpfNovo)) {
+            throw new IllegalArgumentException("CPF já cadastrado para outro paciente");
+        }
+    }
 }

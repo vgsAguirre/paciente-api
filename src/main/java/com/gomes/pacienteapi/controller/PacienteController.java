@@ -85,4 +85,28 @@ public class PacienteController {
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualizar paciente", description = "Atualiza todos os dados de um paciente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Paciente atualizado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos ou paciente não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
+    })
+    public ResponseEntity<PacienteResponse> atualizar(@PathVariable Long id, @Valid @RequestBody PacienteRequest request) {
+        PacienteResponse response = service.atualizar(id, request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "Atualizar dados do paciente parcialmente", description = "Atualiza apenas os campos informados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Paciente atualizado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos ou paciente não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
+    })
+    public ResponseEntity<PacienteResponse> atualizarParcial(@PathVariable Long id, @RequestBody PacienteRequest request) {
+        PacienteResponse response = service.atualizarParcial(id, request);
+        return ResponseEntity.ok(response);
+    }
 }

@@ -34,4 +34,38 @@ public class PacienteMapper {
                 paciente.getDataAtualizacao()
         );
     }
+
+    public void updateEntity(Paciente paciente, PacienteRequest request) {
+        paciente.setNome(request.getNome());
+        paciente.setCpf(request.getCpf());
+        paciente.setDataNascimento(request.getDataNascimento());
+        paciente.setEmail(request.getEmail());
+        paciente.setTelefone(request.getTelefone());
+        paciente.setEndereco(request.getEndereco());
+        paciente.setObservacoes(request.getObservacoes());
+    }
+
+    public void updateEntityPartial(Paciente paciente, PacienteRequest request) {
+        if (request.getNome() != null) {
+            paciente.setNome(request.getNome());
+        }
+        if (request.getCpf() != null) {
+            paciente.setCpf(request.getCpf());
+        }
+        if (request.getDataNascimento() != null) {
+            paciente.setDataNascimento(request.getDataNascimento());
+        }
+        if (request.getEmail() != null) {
+            paciente.setEmail(request.getEmail());
+        }
+        if (request.getTelefone() != null) {
+            paciente.setTelefone(request.getTelefone());
+        }
+        if (request.getEndereco() != null) {
+            paciente.setEndereco(request.getEndereco());
+        }
+        if (request.getObservacoes() != null) {
+            paciente.setObservacoes(request.getObservacoes());
+        }
+    }
 }
